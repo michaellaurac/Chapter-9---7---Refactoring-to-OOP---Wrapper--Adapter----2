@@ -6,7 +6,7 @@ const fileName = () => {
 /* eslint-env mocha */
 
 const wish = require("wish");
-const Target = require("./target.js");
+const { Target, Adaptee } = require("./target.js");
 
 describe("tests run on the 'target.js' file:", () => {
   // setup test
@@ -14,5 +14,18 @@ describe("tests run on the 'target.js' file:", () => {
     wish(fileName() === "target_test.js");
   });
   // functional tests
-  console.log(Target);
+  const formal = new Target();
+  it("verifies that formal's method hello returns \"hello\"", () => {
+    wish(formal.hello() === "hello");
+  });
+  it("verifies that formal's method goodbye returns \"goodbye\"", () => {
+    wish(formal.goodbye() === "goodbye");
+  });
+  const casual = new Adaptee();
+  it("verifies that casual's method hi returns \"hi\"", () => {
+    wish(casual.hi() === "hi");
+  });
+  it("verifies that casual's method bye returns \"bye\"", () => {
+    wish(casual.bye() === "bye");
+  });
 });

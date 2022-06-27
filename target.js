@@ -1,5 +1,20 @@
 class Target {
+  hello () {
+    return "hello";
+  }
 
+  goodbye () {
+    return "goodbye";
+  }
 };
 
-module.exports = Target;
+class Adaptee {
+  hi () {
+    return "hi";
+  }
+
+  bye () {
+    return "bye";
+  }
+}
+module.exports = { Target, Adaptee };
