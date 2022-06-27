@@ -17,4 +17,12 @@ class Adaptee {
     return "bye";
   }
 }
-module.exports = { Target, Adaptee };
+
+class Adapter {
+  constructor (adaptee) {
+    this.hello = adaptee.hi;
+    this.goodbye = adaptee.bye;
+  }
+}
+
+module.exports = { Target, Adaptee, Adapter };

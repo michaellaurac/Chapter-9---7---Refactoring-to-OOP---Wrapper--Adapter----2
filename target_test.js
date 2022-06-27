@@ -6,7 +6,7 @@ const fileName = () => {
 /* eslint-env mocha */
 
 const wish = require("wish");
-const { Target, Adaptee } = require("./target.js");
+const { Target, Adaptee, Adapter } = require("./target.js");
 
 describe("tests run on the 'target.js' file:", () => {
   // setup test
@@ -27,5 +27,12 @@ describe("tests run on the 'target.js' file:", () => {
   });
   it("verifies that casual's method bye returns \"bye\"", () => {
     wish(casual.bye() === "bye");
+  });
+  const adaptedCasual = new Adapter(new Adaptee());
+  it("verifies that adaptedCasual's method hello returns \"hi\"", () => {
+    wish(adaptedCasual.hello() === "hi");
+  });
+  it("verifies that adaptedCasual's method goodbye returns \"bye\"", () => {
+    wish(adaptedCasual.goodbye() === "bye");
   });
 });
